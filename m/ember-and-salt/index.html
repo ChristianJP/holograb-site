@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="holograb-static" content="1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0b">
+<title>Menu · holograb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<script>
+  // Served at /m/:slug (server, web/ is root) or /web/menu/index.html (static test server, project is root).
+  window.HG_BASE = location.pathname.startsWith('/web/') ? '/web/' : '/';
+  document.write('<link rel="stylesheet" href="' + HG_BASE + 'brand/tokens.css"><link rel="stylesheet" href="' + HG_BASE + 'menu/menu.css">');
+  document.write('<script type="module" src="' + HG_BASE + 'menu/menu.js"><\/script>');
+</script>
+</head>
+<body class="t-noir is-loading">
+  <div id="app"><div class="state"><span class="hg-label">Loading menu</span></div></div>
+</body>
+</html>

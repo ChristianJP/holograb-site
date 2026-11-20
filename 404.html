@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found — holograb®</title>
+<script>
+  var m = location.pathname.match(/^\/m\/([^/]+)\/([^/]+)\/?$/);
+  if (m) location.replace('/m/' + m[1] + '/?item=' + encodeURIComponent(m[2]) + location.hash);
+</script>
+<link rel="stylesheet" href="/brand/tokens.css">
+<link rel="stylesheet" href="/landing/base.css">
+<style>main{min-height:100svh;display:grid;place-content:center;gap:18px;padding:24px;text-align:center}</style>
+</head>
+<body>
+<main>
+  <p class="hg-wordmark" style="font-size:clamp(56px,14vw,140px);margin:0">holograb<sup>®</sup></p>
+  <p class="hg-label">This page doesn't exist · <a href="/">Go to holograb.com</a></p>
+</main>
+</body>
+</html>

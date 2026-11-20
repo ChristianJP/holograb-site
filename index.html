@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="holograb-static" content="1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>holograb® — Content Engine &amp; 3D Product Scans Using Next-Gen Gaussian Splats</title>
+<meta name="description" content="Scan every dish in the holograb app. We train it on our GPUs and put a clean 3D dish on your QR menu, your website and your posters — in minutes.">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="stylesheet" href="/brand/tokens.css">
+<link rel="stylesheet" href="/landing/base.css">
+<link rel="stylesheet" href="/landing/landing.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="bar"><span class="hg-label">HOLOGRAB</span><a class="hg-label" href="/dashboard">Sign in</a></div>
+  <div class="stage">
+    <canvas class="scan" aria-hidden="true"></canvas>
+    <div class="copy">
+      <h1 class="hg-wordmark">holograb<sup>®</sup></h1>
+      <p class="tag">Content Engine &amp; 3D Product Scans Using Next-Gen Gaussian Splats</p>
+    </div>
+    <div class="holo">
+      <div class="holo-box" id="heroStage"></div>
+      <p class="hg-label cap"><span id="heroDish">Smash Burger</span><span>Sample dish · 3D</span></p>
+    </div>
+  </div>
+  <div class="foot">
+    <span class="hg-label">CAPTURE · HOST · SELL</span>
+    <a class="hg-label" href="#real">For restaurants ↓</a>
+  </div>
+</header>
+
+<main>
+  <section class="s wrap real proof" id="real">
+    <span class="hg-label kicker reveal">Real dish. Not generated.</span>
+    <h2 class="big reveal">Customers trust<br>what's actually<br><span class="dim">on the plate.</span></h2>
+    <!-- each point with its picture right under it: AI posters · our posters · the one scan they all came from -->
+    <div class="cols">
+      <div class="col reveal">
+        <p><b>No AI food photos.</b> Generated posters promise a dish your kitchen never made. Guests notice — and they remember.</p>
+        <div class="vis fakes">
+          <figure class="fake"><img src="/landing/img/ai-poster-1.jpg" width="452" height="678" loading="lazy" alt="An AI-generated takeaway poster"><span class="no" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6"/></svg></span><span class="tag">AI-generated</span></figure>
+          <figure class="fake"><img src="/landing/img/ai-poster-2.jpg" width="400" height="500" loading="lazy" alt="An AI-generated burger poster"><span class="no" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6"/></svg></span><span class="tag">AI-generated</span></figure>
+        </div>
+      </div>
+      <div class="col reveal">
+        <p><b>Posters from the scan.</b> Every poster, story and screen is made from your actual dish, at any angle, at print resolution.</p>
+        <div class="vis fan" id="ourPosters" aria-label="Three posters made from the same scanned burger"></div>
+      </div>
+      <div class="col reveal">
+        <p><b>Make as many as you like.</b> Scan a dish once, then make a new deal poster whenever you need one. We keep adding templates.</p>
+        <div class="vis scan" id="proofScan">
+          <img class="fallback" src="/assets/demo/burger.png" alt="The 3D scan the posters were made from" loading="lazy">
+          <span class="hg-label">One scan · drag to turn</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s wrap" id="how">
+    <span class="hg-label kicker reveal">How it works</span>
+    <h2 class="big reveal">Quick &amp; Simple<br>Scanning Process.</h2>
+    <div class="steps">
+      <div class="reveal"><div class="line"></div><span class="n">01</span><h3>Scan in the app</h3><p>Open holograb on your iPhone and walk a slow circle round the plate. A guided ring fills in as you go — about a minute a dish.</p></div>
+      <div class="reveal"><div class="line"></div><span class="n">02</span><h3>We train it</h3><p>Your capture goes to our GPUs, which train a Gaussian splat of the dish. The table, the walls and the floaters are cleaned away.</p></div>
+      <div class="reveal"><div class="line"></div><span class="n">03</span><h3>On your menu in minutes</h3><p>A clean 3D dish, centred and true to colour — on your QR menu, in embeds for your own site, and in posters and videos.</p></div>
+    </div>
+  </section>
+
+  <section class="s wrap dish" id="dish">
+    <div class="view reveal" id="dishView">
+      <img class="fallback" src="/assets/demo/burger.png" alt="Smash Burger, 3D scan" onerror="this.remove()">
+    </div>
+    <div class="meta reveal">
+      <span class="hg-label kicker">Live · drag to turn</span>
+      <h2 class="big" id="dishName">Smash Burger</h2>
+      <p class="lede" id="dishDesc">Two aged-beef patties, American cheese, pickles, house sauce, toasted potato bun.</p>
+      <div class="price" id="dishPrice">£12.50</div>
+      <span class="hg-label" id="dishCount">Sample dish · 3D</span>
+    </div>
+  </section>
+
+  <section class="s wrap" id="menu">
+    <span class="hg-label kicker reveal">QR menu</span>
+    <h2 class="big reveal">Your menu,<br>one QR away.</h2>
+    <p class="lede reveal">Pick a template, set your accent and type, publish. Every dish turns in the guest's hand.</p>
+    <div class="tpls" id="tpls"></div>
+  </section>
+
+  <section class="s wrap real" id="end-to-end">
+    <span class="hg-label kicker reveal">End to end</span>
+    <h2 class="big reveal">Your phone.<br>Our GPUs.<br><span class="dim">Your menu.</span></h2>
+    <p class="lede reveal">holograb does the capture, the processing and the hosting. Nothing to export, no 3D software, no extra apps — scan the dish and it’s on the menu.</p>
+    <div class="pipe reveal" aria-label="Capture, align, train, clean, host"><span>Capture</span><span>Align</span><span>Train</span><span>Clean</span><span>Host</span></div>
+    <span class="hg-label formats reveal">Gaussian splatting · trained on our GPUs · ready in minutes</span>
+  </section>
+
+  <section class="s wrap" id="pricing">
+    <span class="hg-label kicker reveal">Pricing</span>
+    <h2 class="big reveal">One setup.<br>Small monthly.</h2>
+    <p class="lede reveal">Setup covers scanning and building your menu. Monthly covers hosting, updates and re-scans.</p>
+    <div class="plans" id="plans"></div>
+  </section>
+
+  <section class="s wrap custom" id="custom">
+    <div>
+      <span class="hg-label kicker reveal">Custom build</span>
+      <h2 class="big reveal">Something<br>bespoke.</h2>
+      <p class="lede reveal">A site designed around your dishes, an on-site scan day, and priority support. Tell us a little and we'll be in touch.</p>
+    </div>
+    <form id="customForm" class="reveal" autocomplete="on">
+      <label class="hgx-field"><span>Restaurant</span><input class="hgx-input" name="restaurant" required placeholder="Ember &amp; Salt"></label>
+      <div class="row">
+        <label class="hgx-field"><span>Contact</span><input class="hgx-input" name="contact" required placeholder="Email or phone"></label>
+        <label class="hgx-field"><span>Budget</span>
+          <select class="hgx-input" name="budget"><option>£1,500 – £3,000</option><option>£3,000 – £6,000</option><option>£6,000+</option><option>Not sure yet</option></select>
+        </label>
+      </div>
+      <label class="hgx-field"><span>Notes</span><textarea class="hgx-input" name="notes" placeholder="Number of dishes, your site, timing…"></textarea></label>
+      <div><button class="hgx-btn" type="submit">Request a build</button></div>
+    </form>
+  </section>
+</main>
+
+<footer class="f">
+  <p class="hg-wordmark mark">holograb<sup>®</sup></p>
+  <div class="row">
+    <span class="hg-label">CAPTURE · HOST · SELL</span>
+    <span class="hg-label links"><a href="/m/ember-and-salt">Sample menu</a><a href="/legal/privacy.html">Privacy</a><a href="/legal/terms.html">Terms</a></span>
+    <span class="hg-label">© 2026 WEAREHOLOGRAB</span>
+  </div>
+</footer>
+
+<script type="module" src="/landing/landing.js"></script>
+</body>
+</html>

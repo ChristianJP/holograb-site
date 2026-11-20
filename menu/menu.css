@@ -1,0 +1,155 @@
+/* holograb QR menu — templates: .t-noir (house), .t-paper (editorial), .t-market (bold blocks). No borders. */
+:root { --accent: #ff4d2e; --display: var(--hg-font-display); --bg: #0b0b0b; --fg: #f4f4f2; --fg2: #c9c9c6; --muted: #7d7d7a; --fill: #151515; --pad: 22px; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--hg-font-display); font-weight: 400; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+body.locked { overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+.state { min-height: 100vh; display: grid; place-content: center; text-align: center; gap: 14px; padding: var(--pad); }
+.is-loading .state .hg-label { animation: breathe 1.6s var(--hg-ease) infinite; }
+@keyframes breathe { 50% { opacity: .35; } }
+
+/* ---------- header ---------- */
+.hero { position: relative; padding: 18px var(--pad) 46px; overflow: hidden; }
+.hero .glow { opacity: .42; -webkit-mask-image: radial-gradient(ellipse 70% 46% at 28% 62%, #000 0%, rgba(0,0,0,.5) 45%, transparent 80%); mask-image: radial-gradient(ellipse 70% 46% at 28% 62%, #000 0%, rgba(0,0,0,.5) 45%, transparent 80%); }
+.topbar { position: relative; display: flex; justify-content: space-between; margin-bottom: 72px; }
+.logo { position: relative; height: 40px; margin-bottom: 18px; }
+.name { position: relative; margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.045em; line-height: .9; font-size: clamp(54px, 16vw, 132px); overflow-wrap: anywhere; hyphens: auto; }
+.name.long { font-size: clamp(42px, 11.5vw, 104px); }
+.name.xlong { font-size: clamp(34px, 8.5vw, 84px); }
+.tagline { position: relative; margin: 16px 0 0; color: var(--fg2); font-size: 17px; max-width: 30ch; }
+.preview-badge { position: relative; display: inline-block; margin-top: 18px; color: var(--accent); }
+
+/* ---------- category nav ---------- */
+.cats { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.cats-in { display: flex; gap: 26px; overflow-x: auto; padding: 16px var(--pad); scrollbar-width: none; }
+.cats-in::-webkit-scrollbar { display: none; }
+.cats a { flex: none; font-family: var(--hg-font-mono); text-transform: uppercase; letter-spacing: var(--hg-track-mono); font-size: 12px; color: var(--muted); transition: color .3s; }
+.cats a.on { color: var(--fg); }
+
+/* ---------- sections + items ---------- */
+main { padding: 8px var(--pad) 40px; max-width: 1180px; margin: 0 auto; }
+.cat { padding-top: 40px; scroll-margin-top: 60px; }
+.cat-h { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 22px; font-family: var(--display); font-weight: 800; letter-spacing: -0.04em; font-size: 34px; }
+.items { display: grid; grid-template-columns: 1fr; gap: 46px; }
+.item { cursor: pointer; outline: none; transition: opacity .3s; }
+.item:focus-visible .info h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.media { position: relative; aspect-ratio: 1 / 0.86; border-radius: 22px; overflow: hidden; background: radial-gradient(ellipse 60% 50% at 50% 55%, #171717 0%, transparent 70%); }
+.thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .5s var(--hg-ease), transform .8s var(--hg-ease); }
+.item:hover .thumb { transform: scale(1.025); }
+.live { position: absolute; inset: 0; opacity: 0; transition: opacity .5s var(--hg-ease); }
+.media.is-live .live { opacity: 1; }
+.media.is-live .thumb { opacity: 0; }
+.info { padding-top: 14px; }
+.row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.row h3, .row h2 { margin: 0; font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; font-size: 21px; line-height: 1.15; }
+.price { font-family: var(--hg-font-mono); font-size: 14px; color: var(--fg); white-space: nowrap; letter-spacing: .04em; }
+.desc { margin: 8px 0 0; color: var(--fg2); font-size: 15px; line-height: 1.5; max-width: 52ch; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.meta:empty { display: none; }
+.tag { font-family: var(--hg-font-mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; padding: 6px 10px; border-radius: 99px; background: var(--fill); color: var(--fg2); }
+.sold { opacity: .42; }
+.sold-l { color: var(--accent); }
+.feat .row h3::after { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-left: 10px; vertical-align: .25em; }
+
+/* placeholder (no model yet) */
+.ph { position: absolute; inset: 0; display: grid; place-items: center; }
+.ph-ring { position: absolute; width: 46%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, transparent 58%, rgba(255,255,255,.05) 60%, transparent 72%); }
+.ph-i { font-family: var(--display); font-weight: 800; font-size: 64px; letter-spacing: -0.05em; color: var(--muted); opacity: .5; text-transform: lowercase; }
+.ph-l { position: absolute; bottom: 18px; font-size: 10px; }
+
+/* footer */
+.foot { text-align: center; padding: 70px var(--pad) calc(60px + env(safe-area-inset-bottom)); }
+.foot-t { margin: 0 0 8px; color: var(--muted); font-size: 13px; }
+.foot-w { font-size: 30px; }
+.addr { margin-top: 26px; font-size: 10px; }
+
+/* ---------- dish sheet ---------- */
+.sheet { position: fixed; inset: 0; z-index: 20; background: var(--bg); display: flex; flex-direction: column; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  opacity: 0; pointer-events: none; transform: translateY(24px); transition: opacity .35s var(--hg-ease), transform .45s var(--hg-ease); }
+.sheet.open { opacity: 1; pointer-events: auto; transform: none; }
+.sheet-stage { position: relative; flex: none; height: min(62vh, 640px); background: radial-gradient(ellipse 55% 45% at 50% 55%, color-mix(in srgb, var(--fg) 6%, transparent) 0%, transparent 70%); }
+.sheet-3d { position: absolute; inset: 0; }
+.sheet-thumb, .sheet-live { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .5s var(--hg-ease); }
+.sheet-live { opacity: 0; }
+.sheet-3d.is-live .sheet-live { opacity: 1; }
+.sheet-3d.is-live .sheet-thumb { opacity: 0; }
+.hint { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-size: 10px; pointer-events: none; opacity: .8; }
+.no-model .hint { display: none; }
+.close { position: fixed; top: calc(14px + env(safe-area-inset-top)); right: 14px; z-index: 2; border: 0; cursor: pointer; font-family: var(--hg-font-mono); text-transform: uppercase; letter-spacing: var(--hg-track-mono); font-size: 11px;
+  padding: 11px 16px; border-radius: 99px; background: color-mix(in srgb, var(--fg) 10%, transparent); color: var(--fg); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.sheet-body { padding: 10px var(--pad) calc(48px + env(safe-area-inset-bottom)); max-width: 680px; width: 100%; margin: 0 auto; }
+.sheet-body .row h2 { font-size: clamp(30px, 8vw, 44px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.sheet-body .price { font-size: 17px; }
+.sheet-body .desc { -webkit-line-clamp: unset; font-size: 16.5px; margin-top: 16px; }
+.sheet-body .meta { margin-top: 18px; }
+.allergens { margin-top: 26px; font-size: 10.5px; line-height: 1.9; }
+
+/* ---------- desktop ---------- */
+@media (min-width: 760px) {
+  :root { --pad: 48px; }
+  .topbar { margin-bottom: 110px; }
+  .l-grid .items { grid-template-columns: repeat(2, 1fr); gap: 64px 48px; }
+  .sheet { flex-direction: row; }
+  .sheet-stage { flex: 1.3; height: 100vh; position: sticky; top: 0; }
+  .sheet-body { flex: 1; align-self: center; padding: 48px; }
+}
+@media (min-width: 1100px) { .l-grid .items { grid-template-columns: repeat(3, 1fr); } }
+/* list layout: media left, text right */
+.l-list .items { gap: 28px; }
+.l-list .item { display: grid; grid-template-columns: 38% 1fr; gap: 18px; align-items: center; }
+.l-list .media { aspect-ratio: 1; }
+.l-list .info { padding-top: 0; }
+@media (min-width: 760px) { .l-list .items { grid-template-columns: 1fr 1fr; gap: 40px 56px; } .l-list .item { grid-template-columns: 200px 1fr; } }
+
+/* ================= paper ================= */
+.t-paper { --bg: #f3efe6; --fg: #161412; --fg2: #4a4640; --muted: #8b857a; --fill: #e8e2d4; --display: 'Instrument Serif', 'Playfair Display', Georgia, serif; }
+.t-paper .glow { display: none; }
+.t-paper .name { font-weight: 400; letter-spacing: -0.02em; text-transform: none; font-size: clamp(56px, 17vw, 140px); line-height: .95; }
+.t-paper .tagline { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; }
+.t-paper .cat-h { font-weight: 400; text-transform: none; font-style: italic; font-size: 40px; letter-spacing: -0.01em; }
+.t-paper .row h3, .t-paper .row h2 { font-weight: 400; letter-spacing: -0.005em; font-size: 26px; }
+.t-paper .sheet-body .row h2 { font-weight: 400; font-size: clamp(38px, 10vw, 56px); }
+.t-paper .media { background: radial-gradient(ellipse 60% 50% at 50% 55%, #ebe5d8 0%, transparent 72%); }
+.t-paper .tag { background: transparent; padding: 0; color: var(--muted); }
+.t-paper .price { color: var(--fg); }
+.t-paper .ph-ring { background: radial-gradient(circle, transparent 58%, rgba(0,0,0,.06) 60%, transparent 72%); }
+.t-paper .close { background: rgba(0,0,0,.06); }
+/* one centred 980px column: header, category nav and dishes share the same left edge */
+@media (min-width: 760px) { .t-paper main, .t-paper .hero, .t-paper .cats-in { max-width: 980px; margin-left: auto; margin-right: auto; } }
+
+/* ================= market ================= */
+.t-market { --bg: #0e0e0e; --fill: #1d1d1d; }
+.t-market .hero { background: var(--accent); color: #0e0e0e; padding-bottom: 36px; }
+.t-market .hero .hg-label { color: rgba(0,0,0,.6); }
+.t-market .glow { display: none; }
+.t-market .name { font-stretch: 125%; font-weight: 900; letter-spacing: -0.05em; font-size: clamp(48px, 15vw, 128px); }
+.t-market .tagline { color: rgba(0,0,0,.72); font-weight: 600; }
+.t-market .cat-h { font-stretch: 125%; font-weight: 900; font-size: 40px; color: var(--accent); }
+.t-market .cat:nth-child(even) .cat-h { color: var(--fg); }
+.t-market .row h3 { font-stretch: 112%; font-weight: 800; }
+.t-market .media { background: color-mix(in srgb, var(--accent) 14%, #151515); border-radius: 28px; }
+.t-market .cat:nth-child(even) .media { background: #1b1b1b; }
+.t-market .price { background: var(--accent); color: #0e0e0e; padding: 4px 9px; border-radius: 99px; font-weight: 600; }
+.t-market .cats a.on { color: var(--accent); }
+.t-market .items { grid-template-columns: 1fr 1fr; gap: 30px 14px; }
+.t-market .items .desc { display: none; }
+.t-market .items .row { flex-direction: column; align-items: flex-start; gap: 8px; }
+.t-market .items .row h3 { font-size: 17px; }
+.t-market .item.feat { grid-column: 1 / -1; }
+.t-market .item.feat .desc { display: -webkit-box; }
+@media (min-width: 760px) { .t-market .items { grid-template-columns: repeat(3, 1fr); gap: 40px 28px; } .t-market .items .row h3 { font-size: 21px; } }
+.t-market.l-list .item { grid-column: auto; }
+/* polish */
+.l-list .ph-l { display: none; }
+.l-list .ph-i { font-size: 40px; }
+@media (min-width: 760px) { .t-noir main, .t-market main { max-width: none; } }
+/* Long restaurant names shrink in every template (after the template rules so they win). */
+.t-noir .name.long, .t-paper .name.long, .t-market .name.long { font-size: clamp(42px, 11.5vw, 104px); }
+.t-noir .name.xlong, .t-paper .name.xlong, .t-market .name.xlong { font-size: clamp(34px, 8.5vw, 84px); }
+/* A dish with no price never shows an empty pill (Market paints .price as an accent pill). */
+.price:empty { display: none; }
+/* Classic lettering on Night/Market. menu.js writes the chosen font into --display on <html> (options.html: on .root),
+   so match that inline style; Paper keeps its own serif rules. Instrument Serif ships one weight: set it at 400 with
+   gentle tracking instead of a crowded faux-bold. */
+[style*="Instrument Serif"] > :not(.t-paper) :is(.name, .cat-h, .row h3, .row h2, .ph-i) { font-weight: 400; letter-spacing: -0.015em; font-stretch: normal; }

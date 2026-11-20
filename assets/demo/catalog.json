@@ -1,0 +1,105 @@
+[
+  {
+    "id": "burger",
+    "name": "Smash Burger",
+    "category": "Mains",
+    "price": 12.5,
+    "description": "Two dry-aged beef patties smashed on the plancha till lacy at the edges, American cheese, butter lettuce, beef tomato and house burger sauce in a toasted sesame brioche bun.",
+    "tags": [
+      "new"
+    ],
+    "allergens": [
+      "gluten",
+      "milk",
+      "eggs",
+      "mustard",
+      "sesame"
+    ]
+  },
+  {
+    "id": "pizza",
+    "name": "Margherita",
+    "category": "Mains",
+    "price": 11,
+    "description": "48-hour fermented dough blistered in the wood oven, San Marzano tomato, fior di latte, fresh basil and a ribbon of Sicilian olive oil.",
+    "tags": [
+      "vegetarian"
+    ],
+    "allergens": [
+      "gluten",
+      "milk"
+    ]
+  },
+  {
+    "id": "ramen",
+    "name": "Tonkotsu Ramen",
+    "category": "Mains",
+    "price": 14.5,
+    "description": "18-hour pork bone broth, springy wheat noodles, torched chashu belly, a soy-marinated jammy egg, spring onion and nori.",
+    "tags": [],
+    "allergens": [
+      "gluten",
+      "eggs",
+      "soya",
+      "sesame"
+    ]
+  },
+  {
+    "id": "sushi",
+    "name": "Nigiri Selection",
+    "category": "Starters",
+    "price": 13,
+    "description": "Five pieces over seasoned rice: Scottish salmon, bluefin tuna and yellowtail, with pickled ginger and fresh wasabi.",
+    "tags": [
+      "gluten-free"
+    ],
+    "allergens": [
+      "fish",
+      "soya",
+      "sulphites"
+    ]
+  },
+  {
+    "id": "cake",
+    "name": "Chocolate Layer Cake",
+    "category": "Desserts",
+    "price": 7.5,
+    "description": "Three layers of dark chocolate sponge with whipped ganache, finished with a mirror glaze and cocoa nib crumb.",
+    "tags": [
+      "vegetarian"
+    ],
+    "allergens": [
+      "gluten",
+      "milk",
+      "eggs",
+      "soya"
+    ]
+  },
+  {
+    "id": "tacos",
+    "name": "Birria Tacos",
+    "category": "Mains",
+    "price": 10,
+    "description": "Three corn tortillas with slow-braised beef, salsa roja, white onion, coriander and a wedge of lime.",
+    "tags": [
+      "spicy",
+      "gluten-free"
+    ],
+    "allergens": [
+      "celery"
+    ]
+  },
+  {
+    "id": "latte",
+    "name": "Iced Oat Latte",
+    "category": "Drinks",
+    "price": 4.2,
+    "description": "Double shot of our house espresso poured over oat milk and ice.",
+    "tags": [
+      "vegan"
+    ],
+    "allergens": [
+      "gluten"
+    ]
+  }
+]

@@ -1,0 +1,219 @@
+{
+  "restaurant": {
+    "slug": "ember-and-salt",
+    "name": "Ember & Salt",
+    "tagline": "Wood-fired kitchen",
+    "currency": "GBP",
+    "locale": "en-GB",
+    "logoUrl": null,
+    "address": "14 Coal Lane, London",
+    "theme": {
+      "template": "noir",
+      "accent": "#ff4d2e",
+      "background": null,
+      "font": "grotesk",
+      "layout": "grid",
+      "show3d": true,
+      "autoRotate": true,
+      "heroItemId": null
+    }
+  },
+  "categories": [
+    "Starters",
+    "Mains",
+    "Desserts",
+    "Drinks"
+  ],
+  "items": [
+    {
+      "id": "i_burger",
+      "name": "Smash Burger",
+      "description": "Two dry-aged beef patties smashed on the plancha till lacy at the edges, American cheese, butter lettuce, beef tomato and house burger sauce in a toasted sesame brioche bun.",
+      "price": 12.5,
+      "priceLabel": "£12.50",
+      "category": "Mains",
+      "tags": [
+        "new"
+      ],
+      "allergens": [
+        "gluten",
+        "milk",
+        "eggs",
+        "mustard",
+        "sesame"
+      ],
+      "featured": true,
+      "available": true,
+      "model": {
+        "status": "ready",
+        "splatUrl": "/assets/demo/burger.splat",
+        "thumbUrl": "/assets/demo/burger.png",
+        "splatCount": 0
+      }
+    },
+    {
+      "id": "i_pizza",
+      "name": "Margherita",
+      "description": "48-hour fermented dough blistered in the wood oven, San Marzano tomato, fior di latte, fresh basil and a ribbon of Sicilian olive oil.",
+      "price": 11,
+      "priceLabel": "£11.00",
+      "category": "Mains",
+      "tags": [
+        "vegetarian"
+      ],
+      "allergens": [
+        "gluten",
+        "milk"
+      ],
+      "featured": false,
+      "available": true,
+      "model": {
+        "status": "ready",
+        "splatUrl": "/assets/demo/pizza.splat",
+        "thumbUrl": "/assets/demo/pizza.png",
+        "splatCount": 0
+      }
+    },
+    {
+      "id": "i_ramen",
+      "name": "Tonkotsu Ramen",
+      "description": "18-hour pork bone broth, springy wheat noodles, torched chashu belly, a soy-marinated jammy egg, spring onion and nori.",
+      "price": 14.5,
+      "priceLabel": "£14.50",
+      "category": "Mains",
+      "tags": [],
+      "allergens": [
+        "gluten",
+        "eggs",
+        "soya",
+        "sesame"
+      ],
+      "featured": false,
+      "available": true,
+      "model": {
+        "status": "ready",
+        "splatUrl": "/assets/demo/ramen.splat",
+        "thumbUrl": "/assets/demo/ramen.png",
+        "splatCount": 0
+      }
+    },
+    {
+      "id": "i_sushi",
+      "name": "Nigiri Selection",
+      "description": "Five pieces over seasoned rice: Scottish salmon, bluefin tuna and yellowtail, with pickled ginger and fresh wasabi.",
+      "price": 13,
+      "priceLabel": "£13.00",
+      "category": "Starters",
+      "tags": [
+        "gluten-free"
+      ],
+      "allergens": [
+        "fish",
+        "soya",
+        "sulphites"
+      ],
+      "featured": false,
+      "available": true,
+      "model": {
+        "status": "ready",
+        "splatUrl": "/assets/demo/sushi.splat",
+        "thumbUrl": "/assets/demo/sushi.png",
+        "splatCount": 0
+      }
+    },
+    {
+      "id": "i_cake",
+      "name": "Chocolate Layer Cake",
+      "description": "Three layers of dark chocolate sponge with whipped ganache, finished with a mirror glaze and cocoa nib crumb.",
+      "price": 7.5,
+      "priceLabel": "£7.50",
+      "category": "Desserts",
+      "tags": [
+        "vegetarian"
+      ],
+      "allergens": [
+        "gluten",
+        "milk",
+        "eggs",
+        "soya"
+      ],
+      "featured": false,
+      "available": true,
+      "model": {
+        "status": "ready",
+        "splatUrl": "/assets/demo/cake.splat",
+        "thumbUrl": "/assets/demo/cake.png",
+        "splatCount": 0
+      }
+    },
+    {
+      "id": "i_tacos",
+      "name": "Birria Tacos",
+      "description": "Three corn tortillas with slow-braised beef, salsa roja, white onion, coriander and a wedge of lime.",
+      "price": 10,
+      "priceLabel": "£10.00",
+      "category": "Mains",
+      "tags": [
+        "spicy",
+        "gluten-free"
+      ],
+      "allergens": [
+        "celery"
+      ],
+      "featured": false,
+      "available": false,
+      "model": {
+        "status": "ready",
+        "splatUrl": "/assets/demo/tacos.splat",
+        "thumbUrl": "/assets/demo/tacos.png",
+        "splatCount": 0
+      }
+    },
+    {
+      "id": "i_latte",
+      "name": "Iced Oat Latte",
+      "description": "Double shot of our house espresso poured over oat milk and ice.",
+      "price": 4.2,
+      "priceLabel": "£4.20",
+      "category": "Drinks",
+      "tags": [
+        "vegan"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "featured": false,
+      "available": true,
+      "model": {
+        "status": "ready",
+        "splatUrl": "/assets/demo/latte.splat",
+        "thumbUrl": "/assets/demo/latte.png",
+        "splatCount": 0
+      }
+    },
+    {
+      "id": "i_soup",
+      "name": "Soup of the Day",
+      "description": "Ask your server — scan coming soon.",
+      "price": 6.5,
+      "priceLabel": "£6.50",
+      "category": "Starters",
+      "tags": [
+        "vegan"
+      ],
+      "allergens": [
+        "celery"
+      ],
+      "featured": false,
+      "available": true,
+      "model": {
+        "status": "none",
+        "splatUrl": null,
+        "thumbUrl": null,
+        "splatCount": 0
+      }
+    }
+  ],
+  "menuUrl": "http://localhost:4600/m/ember-and-salt",
+  "publishedAt": "2026-11-15T01:19:03.111Z"
+}

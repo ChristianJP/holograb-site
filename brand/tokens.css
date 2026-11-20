@@ -1,0 +1,91 @@
+/* holograb brand tokens — shared by every web page. Owner: orchestrator. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --hg-bg: #0b0b0b;
+  --hg-bg-2: #121212;
+  --hg-fill: #1a1a1a;
+  --hg-fg: #f4f4f2;
+  --hg-fg-2: #c9c9c6;
+  --hg-muted: #7d7d7a;
+  --hg-red: #ff3b3b;
+  --hg-green: #2bd96b;
+  --hg-blue: #3b6bff;
+  --hg-cream: #efeee6;
+  --hg-ink: #141414;
+  --hg-font-display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --hg-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --hg-track-mono: 0.28em;
+  --hg-radius: 16px;
+  --hg-ease: cubic-bezier(.2, .7, .1, 1);
+}
+
+/* Light look — OPT-IN: only pages whose <html> carries data-theme="light" (the iPhone app sets it on the Content
+   page when the owner picks Account → Appearance → Light). Pages without the attribute are untouched.
+   --hg-cream / --hg-ink are the "pill" pair (toast, buttons): cream + ink in dark, ink + off-white here. */
+html[data-theme="light"] {
+  --hg-bg: #f4f4f2;
+  --hg-bg-2: #eaeae6;
+  --hg-fill: #e2e2dd;
+  --hg-fg: #0b0b0b;
+  --hg-fg-2: #3d3d3a;
+  --hg-muted: #63625c;   /* small labels: 4.5:1 or better on the page and on the fills */
+  --hg-red: #e0352b;
+  --hg-green: #0f7335;
+  --hg-cream: #0b0b0b;
+  --hg-ink: #f4f4f2;
+  color-scheme: light;
+}
+html[data-theme="light"] .hg-toast { box-shadow: 0 10px 40px rgba(0, 0, 0, .18); }
+
+.hg-wordmark {
+  font-family: var(--hg-font-display);
+  font-weight: 800;
+  font-stretch: 100%;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+  color: var(--hg-fg);
+}
+.hg-wordmark sup, .hg-wordmark .reg { font-size: 0.24em; font-weight: 600; letter-spacing: 0; vertical-align: 0.95em; margin-left: 0.04em; }
+
+.hg-label {
+  font-family: var(--hg-font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--hg-track-mono);
+  font-size: 12px;
+  color: var(--hg-muted);
+}
+
+/* RGB scanline glow band — place inside a position:relative hero */
+.hg-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 9px, rgba(255, 59, 59, .55) 9px 10px,
+      transparent 10px 17px, rgba(43, 217, 107, .45) 17px 18px,
+      transparent 18px 23px, rgba(59, 107, 255, .6) 23px 24px,
+      transparent 24px 37px, rgba(255, 59, 59, .3) 37px 38px,
+      transparent 38px 44px, rgba(59, 107, 255, .35) 44px 45px,
+      transparent 45px 53px);
+  -webkit-mask-image: radial-gradient(ellipse 55% 34% at 32% 50%, #000 0%, rgba(0,0,0,.55) 45%, transparent 78%);
+          mask-image: radial-gradient(ellipse 55% 34% at 32% 50%, #000 0%, rgba(0,0,0,.55) 45%, transparent 78%);
+  opacity: .55;
+}
+
+.hg-toast {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--hg-cream);
+  color: var(--hg-ink);
+  font-family: var(--hg-font-display);
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .45);
+  z-index: 1000;
+}
