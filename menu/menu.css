@@ -153,3 +153,43 @@ main { padding: 8px var(--pad) 40px; max-width: 1180px; margin: 0 auto; }
    so match that inline style; Paper keeps its own serif rules. Instrument Serif ships one weight: set it at 400 with
    gentle tracking instead of a crowded faux-bold. */
 [style*="Instrument Serif"] > :not(.t-paper) :is(.name, .cat-h, .row h3, .row h2, .ph-i) { font-weight: 400; letter-spacing: -0.015em; font-stretch: normal; }
+
+/* ================= menu view (default): compact rows like a printed menu, sections fold ================= */
+.viewtog { position: relative; z-index: 2; border: 0; cursor: pointer; font-family: var(--hg-font-mono); text-transform: uppercase; letter-spacing: var(--hg-track-mono); font-size: 10.5px;
+  padding: 9px 14px; border-radius: 99px; background: color-mix(in srgb, var(--fg) 10%, transparent); color: var(--fg); }
+.v-list .vt-menu, .v-3d .vt-3d { display: none; }
+.t-market .viewtog { background: rgba(0,0,0,.14); color: #0e0e0e; }
+.cat-t { all: unset; box-sizing: border-box; cursor: pointer; display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 12px; }
+.cat-r { display: inline-flex; align-items: center; gap: 12px; }
+.chev { width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-3px); opacity: .55; transition: transform .25s var(--hg-ease); }
+.cat.collapsed .chev { transform: rotate(-45deg); }
+.cat.collapsed .items { display: none; }
+.cat-t:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+
+body.v-list .hero { padding-bottom: 22px; }
+body.v-list .topbar { margin-bottom: 30px; }
+body.v-list .name, body.v-list .name.long, body.v-list .name.xlong { font-size: clamp(34px, 10vw, 64px); }
+body.v-list .tagline { font-size: 15px; margin-top: 10px; }
+body.v-list .cat { padding-top: 22px; }
+body.v-list .cat-h { font-size: 22px; margin: 0 0 4px; }
+body.v-list.t-paper .cat-h, body.v-list.t-market .cat-h { font-size: 26px; }
+body.v-list .items { display: grid; grid-template-columns: 1fr !important; gap: 0 !important; }
+body.v-list .item { display: grid; grid-template-columns: 1fr 64px; gap: 14px; align-items: center; padding: 13px 0; grid-column: auto; }
+body.v-list .item + .item { box-shadow: 0 -1px 0 color-mix(in srgb, var(--fg) 7%, transparent); }
+body.v-list .media { order: 2; width: 64px; aspect-ratio: 1; border-radius: 14px; }
+body.v-list .thumb { transform: none !important; }
+body.v-list .info { padding-top: 0; min-width: 0; }
+body.v-list .items .row { flex-direction: row; align-items: baseline; gap: 12px; }
+body.v-list .row h3, body.v-list .items .row h3 { font-size: 17px; }
+body.v-list.t-paper .row h3 { font-size: 21px; }
+body.v-list .items .desc { display: -webkit-box; font-size: 13.5px; margin-top: 3px; -webkit-line-clamp: 2; }
+body.v-list .meta { margin-top: 6px; gap: 6px; }
+body.v-list .tag { font-size: 9px; padding: 4px 8px; }
+body.v-list .t-market .price, body.v-list.t-market .price { padding: 2px 7px; }
+body.v-list .ph-l, body.v-list .ph-ring { display: none; }
+body.v-list .ph-i { font-size: 24px; }
+@media (min-width: 760px) {
+  body.v-list main { max-width: 760px; margin: 0 auto; }
+  body.v-list .item { grid-template-columns: 1fr 84px; }
+  body.v-list .media { width: 84px; }
+}

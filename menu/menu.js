@@ -16,6 +16,9 @@ const useFixtures = q.get('api') === 'fixtures' || !!document.querySelector('met
 const app = document.getElementById('app');
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const ALLERGEN = { gluten: 'Gluten', milk: 'Milk', eggs: 'Eggs', mustard: 'Mustard', sesame: 'Sesame', celery: 'Celery', crustaceans: 'Crustaceans', fish: 'Fish', lupin: 'Lupin', molluscs: 'Molluscs', nuts: 'Tree nuts', peanuts: 'Peanuts', soya: 'Soya', sulphites: 'Sulphites' };
+// Two ways to read the menu: "menu" (compact rows like a printed menu, sections fold) and "3d" (big cards, the dish
+// in view turns in 3D). Customers switch top right; the choice is remembered on their phone.
+let view = (() => { try { return localStorage.getItem('hg-menu-view') === '3d' ? '3d' : 'menu'; } catch { return 'menu'; } })();
 const FONTS = { grotesk: "var(--hg-font-display)", serif: "'Instrument Serif', 'Playfair Display', Georgia, serif", mono: 'var(--hg-font-mono)' };
 
 function menuPath(itemId) {
@@ -71,7 +74,8 @@ function render(data, theme) {
   app.innerHTML = `
     <header class="hero">
       <div class="hg-scanlines glow"></div>
-      <div class="topbar"><span class="hg-label">Menu</span></div>
+      <div class="topbar"><span class="hg-label">Menu</span>
+        <button class="viewtog" id="viewtog" type="button" aria-pressed="false"><span class="vt-3d">View in 3D</span><span class="vt-menu">Menu view</span></button></div>
       ${r.logoUrl ? `<img class="logo" src="${esc(r.logoUrl)}" alt="">` : ''}
       <h1 class="name${r.name.length > 26 ? ' xlong' : r.name.length > 14 ? ' long' : ''}">${esc(r.name)}</h1>
       ${r.tagline ? `<p class="tagline">${esc(r.tagline)}</p>` : ''}
@@ -83,7 +87,7 @@ function render(data, theme) {
     <main>
       ${byCat.map((g) => `
         <section class="cat" id="${catId(g.c)}">
-          <h2 class="cat-h"><span>${esc(g.c)}</span><span class="hg-label n">${String(g.items.length).padStart(2, '0')}</span></h2>
+          <h2 class="cat-h"><button class="cat-t" type="button" aria-expanded="true"><span>${esc(g.c)}</span><span class="cat-r"><span class="hg-label n">${String(g.items.length).padStart(2, '0')}</span><span class="chev" aria-hidden="true"></span></span></button></h2>
           <div class="items">
             ${g.items.map((it) => `
               <article class="item${it.available === false ? ' sold' : ''}${it.featured ? ' feat' : ''}" data-id="${esc(it.id)}" tabindex="0" role="button" aria-label="${esc(it.name)}">
@@ -108,10 +112,27 @@ function render(data, theme) {
       <div class="sheet-body" id="sheetBody"></div>
     </div>`;
 
+  // sections fold (tap the heading); the view switch top right
+  app.querySelectorAll('.cat-t').forEach((b) => b.addEventListener('click', () => {
+    const sec = b.closest('.cat'); const shut = sec.classList.toggle('collapsed');
+    b.setAttribute('aria-expanded', String(!shut));
+    if (view === '3d') setTimeout(() => pickLive(theme), 50);
+  }));
+  const tog = app.querySelector('#viewtog');
+  const setView = (v) => {
+    view = v; try { localStorage.setItem('hg-menu-view', v); } catch {}
+    document.body.classList.toggle('v-3d', v === '3d'); document.body.classList.toggle('v-list', v !== '3d');
+    tog.setAttribute('aria-pressed', String(v === '3d'));
+    if (v === '3d') setTimeout(() => pickLive(theme), 60); else stopLive();
+  };
+  tog.addEventListener('click', () => setView(view === '3d' ? 'menu' : '3d'));
+  setView(view);
+
   // category nav highlight + smooth scroll
   const nav = app.querySelector('.cats-in');
   app.querySelectorAll('.cats a').forEach((a) => a.addEventListener('click', (e) => {
     e.preventDefault(); const el = document.getElementById(a.dataset.cat);
+    if (el.classList.contains('collapsed')) el.querySelector('.cat-t').click();
     window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 64, behavior: 'smooth' });
   }));
   const so = new IntersectionObserver((ents) => {
@@ -153,7 +174,7 @@ function setupLive(theme) {
   let t; addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(() => pickLive(theme), 140); }, { passive: true });
 }
 function pickLive(theme) {
-  if (liveSuspended) return;
+  if (liveSuspended || view !== '3d') return;
   let best = null, bestScore = 0;
   const mid = innerHeight * 0.45;
   for (const [el, ratio] of vis) {
